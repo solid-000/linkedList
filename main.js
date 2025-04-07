@@ -1,4 +1,4 @@
-const List = function (data) {
+const LinkedList = function (data) {
   const Node = function (data = null) {
     this.name = data;
     this.next = null;
@@ -158,7 +158,7 @@ const List = function (data) {
   };
 };
 
-const myList = new List(0);
+const myList = new LinkedList(0);
 myList.append(1);
 myList.append(2);
 myList.append(3);
