@@ -94,6 +94,40 @@ const List = function (data) {
     console.log(`Couldn't find (${item}).`);
   }
 
+  function toString() {
+    let tmp = head;
+    let result = "";
+    while (tmp !== null) {
+      result = result + `(${tmp.name}) -> `;
+      tmp = tmp.next;
+    }
+    result = result + "null";
+    console.log(result);
+  }
+
+  function insertAt(value, index) {
+    let tmp = head;
+    let i = 0;
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+    while (i < index - 1) {
+      if (tmp.next === null) {
+        this.append(value);
+        console.log(
+          `Item was added to the last place since index ${index} is not defined.`
+        );
+        return;
+      }
+      tmp = tmp.next;
+      i++;
+    }
+    let tempNext = tmp.next;
+    tmp.next = new Node(value);
+    tmp.next.next = tempNext;
+  }
+
   return {
     append,
     prepend,
@@ -104,6 +138,8 @@ const List = function (data) {
     pop,
     contains,
     find,
+    toString,
+    insertAt,
   };
 };
 
