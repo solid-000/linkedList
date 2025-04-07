@@ -116,7 +116,7 @@ const List = function (data) {
       if (tmp.next === null) {
         this.append(value);
         console.log(
-          `Item was added to the last place since index ${index} is not defined.`
+          `Item added to the last place since index ${index} is not defined.`
         );
         return;
       }
@@ -126,6 +126,20 @@ const List = function (data) {
     let tempNext = tmp.next;
     tmp.next = new Node(value);
     tmp.next.next = tempNext;
+  }
+
+  function removeAt(index) {
+    let tmp = head;
+    let i = 0;
+    if (index === 0) {
+      head = head.next;
+      return;
+    }
+    while (i < index - 1) {
+      tmp = tmp.next;
+      i++;
+    }
+    tmp.next = tmp.next.next;
   }
 
   return {
@@ -140,6 +154,7 @@ const List = function (data) {
     find,
     toString,
     insertAt,
+    removeAt,
   };
 };
 
