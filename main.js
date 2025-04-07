@@ -57,7 +57,54 @@ const List = function (data) {
     console.log(tmp);
   }
 
-  return { append, prepend, getSize, printHead, printTail, at };
+  function pop() {
+    let tmp = head;
+    while (true) {
+      if (tmp.next.next === null) {
+        tmp.next = null;
+        return;
+      }
+      tmp = tmp.next;
+    }
+  }
+
+  function contains(item) {
+    let tmp = head;
+    while (tmp !== null) {
+      if (tmp.name === item) {
+        console.log(`List contains ${item}.`);
+        return;
+      }
+      tmp = tmp.next;
+    }
+    console.log(`Couldn't find ${item}.`);
+  }
+
+  function find(item) {
+    let tmp = head;
+    let i = 0;
+    while (tmp !== null) {
+      if (tmp.name === item) {
+        console.log(`(${item}) found at index ${i}.`);
+        return;
+      }
+      tmp = tmp.next;
+      i++;
+    }
+    console.log(`Couldn't find (${item}).`);
+  }
+
+  return {
+    append,
+    prepend,
+    getSize,
+    printHead,
+    printTail,
+    at,
+    pop,
+    contains,
+    find,
+  };
 };
 
 const myList = new List(0);
